@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -7,14 +6,20 @@
 
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+$(document).ready(function() {
 
-Vue.component('example', require('./components/Example.vue'));
+    // var socket = io();
+    // socket.on('testerEvent', function(data){document.write(data.description)});
 
-const app = new Vue({
-    el: '#app'
+    $('button.join').on('click', function() {
+        var $tr = $(this).closest('tr');
+        var sessionId = $tr.data('session-id');
+        var sessionType = $tr.data('session-type');
+        window.location.href = "/" + sessionType + "/session/" + sessionId + "/join";
+    });
+
+    $('button.remove').on('click', function() {
+        console.log('remove button clicked');
+    });
+
 });
